@@ -3,7 +3,7 @@ user:
     uid: 1000
     gid: 1000
     group: arun
-    shell: /usr/bin/zsh
+    shell: /usr/bin/bash
     email:  pitastrudl@gmail.com
 
 base_fonts:
