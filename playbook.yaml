@@ -1,0 +1,17 @@
+---
+- hosts: localhost  
+  become: True
+  vars:
+    ansible_connection: local
+  roles:
+    # - { role: base, tags: ['base'] }
+    # - { role: grub, tags: ['grub'], when: "bootloader == 'grub'"}
+    # - { role: sudo, tags: ['sudo'] }
+    # - { role: cron, tags: ['cron'] }
+    - { role: microcode, tags: ['microcode'], when: "'GenuineIntel' in ansible_processor" }
+    - { role: ssh, tags: ['ssh'] }
+    - { role: fonts, tags: ['fonts'] }
+  # dotfiles?
+  vars_prompt:
+    - name: user_password
+      prompt: "Enter desired user password"

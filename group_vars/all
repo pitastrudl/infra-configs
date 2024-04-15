@@ -1,0 +1,71 @@
+user:
+    name: arun
+    uid: 1000
+    gid: 1000
+    group: arun
+    shell: /usr/bin/zsh
+    email:  pitastrudl@gmail.com
+
+base_fonts:
+    - adobe-source-code-pro-fonts
+    - cantarell-fonts
+    - gsfonts
+    - noto-fonts
+    - terminus-font
+    - tex-gyre-fonts
+    - ttc-iosevka
+    - ttc-iosevka-aile
+    - ttc-iosevka-ss08
+    - ttf-caladea
+    - ttf-carlito
+    - ttf-dejavu
+    - ttf-droid
+    - ttf-fira-mono
+    - ttf-ibm-plex
+    - ttf-inconsolata
+    - ttf-liberation
+    - ttf-opensans
+    - ttf-ubuntu-font-family
+
+base_packages: 
+    - base-devel
+    - man-db
+    - man-pages
+    - pacman-contrib
+    - fwupd
+    - dmidecode
+    - tmux
+    - git
+    - rsync
+    - coreutils
+    - moreutils
+    - dateutils
+    - bc
+    - arch-wiki-lite
+    - arch-wiki-docs
+    - python-keyring
+    - python-secretstorage
+    - ruby
+    - jq
+    - tmux
+    - dua-cli
+
+sysmon_packages:  # to be used
+    - htop
+    - btop
+    - glances
+    - lsof
+    - smartmontools
+    - sysstat 
+
+bootloader: grub
+
+aur:
+    dir: aur
+
+journal:
+    max_size: 500M
+
+ssh:
+    port: 22
+    enable_sshd: False
