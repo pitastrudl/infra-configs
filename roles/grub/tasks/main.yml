@@ -2,7 +2,7 @@
 - name: Set kernel parameters
   lineinfile:
     dest: /etc/default/grub
-    regexp: '^GRUB_CMDLINE_LINUX_DEFAULT'
+    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT"
     state: present
     line: 'GRUB_CMDLINE_LINUX_DEFAULT="{{ kernel_parameters }}"'
   when: kernel_parameters is defined
@@ -12,12 +12,11 @@
 - name: Disable Grub submenus
   lineinfile:
     dest: /etc/default/grub
-    regexp: '^GRUB_DISABLE_SUBMENU'
+    regexp: "^GRUB_DISABLE_SUBMENU"
     state: present
-    line: 'GRUB_DISABLE_SUBMENU=y'
+    line: "GRUB_DISABLE_SUBMENU=y"
   notify:
     - rebuild grub
-
 # - name: Install Grub Pacman hook
 #   aur:
 #     name: grub-hook
