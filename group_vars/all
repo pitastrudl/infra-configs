@@ -5,7 +5,7 @@ user:
     group: arun
     shell: /usr/bin/bash
     email:  pitastrudl@gmail.com
-
+hostname: archlinux # based on machine?
 base_fonts:
     - adobe-source-code-pro-fonts
     - cantarell-fonts
@@ -27,7 +27,7 @@ base_fonts:
     - ttf-opensans
     - ttf-ubuntu-font-family
 
-base_packages: 
+base_packages:
     - base-devel
     - man-db
     - man-pages
@@ -49,14 +49,14 @@ base_packages:
     - jq
     - tmux
     - dua-cli
-
+pacman_keyserver: keyserver.archlinux.org
 sysmon_packages:  # to be used
     - htop
     - btop
     - glances
     - lsof
     - smartmontools
-    - sysstat 
+    - sysstat
 
 bootloader: grub
 
