@@ -1,0 +1,30 @@
+---
+- name: Install Xorg server and drivers
+  pacman:
+    name:
+      - xorg-server
+      - xorg-xinit
+      - xorg-apps
+      - xf86-video-vesa # fallback driver
+      - xf86-input-libinput # touchscreen/keyboard/mouse
+    state: present
+    update_cache: yes
+
+- name: Install XFCE4 & LightDM packages
+  pacman:
+    name: "{{ xfce4_packages }}"
+    state: present
+    update_cache: yes
+
+- name: Add desktop_user to audio/video/input/network groups
+  user:
+    name: "{{ desktop_user }}"
+    groups: "{{ xfce4_user_groups }}"
+    append: yes
+
+- name: Ensure LightDM is enabled and started
+  systemd:
+    name: lightdm
+    enabled: true
+    state: started
+  notify: restart lightdm

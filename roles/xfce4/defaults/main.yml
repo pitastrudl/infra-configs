@@ -1,0 +1,20 @@
+---
+# user who will log into the desktop environment
+desktop_user: arun
+
+# packages to install for XFCE4 + LightDM
+xfce4_packages:
+  - xfce4
+  - xfce4-goodies
+  - lightdm
+  - lightdm-gtk-greeter
+  - xorg
+  - network-manager-applet
+  - xfce4-screensaver
+  - xfce4-pulseaudio-plugin
+# groups your desktop_user will be added to
+xfce4_user_groups:
+  - audio
+  - video
+  - input
+  - network

@@ -1,0 +1,5 @@
+---
+# packages to install for networking
+nm_packages:
+  - networkmanager
+  - network-manager-applet

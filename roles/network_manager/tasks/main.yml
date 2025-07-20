@@ -1,0 +1,12 @@
+---
+- name: Install NetworkManager packages
+  pacman:
+    name: "{{ nm_packages }}"
+    state: present
+    update_cache: yes
+
+- name: Enable and start NetworkManager
+  systemd:
+    name: NetworkManager
+    enabled: true
+    state: started
