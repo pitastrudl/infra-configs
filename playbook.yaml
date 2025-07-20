@@ -3,7 +3,10 @@
   hosts: all
   become: true
   remote_user: arun
-
+  vars_files:
+    # This will load either vars/dev_config.yml or vars/prod_config.yml
+    # based on the 'environment' variable.
+    - vars/desktop_packages.yml
   vars:
     ansible_user: arun
   roles:

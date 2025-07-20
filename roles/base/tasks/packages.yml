@@ -6,6 +6,13 @@
   tags:
     - packages
 
+- name: Install other packages
+  pacman:
+    name: "{{ tools + sysmon_packages + shell + internet + games + desktop }}"
+    state: present
+  tags:
+    - packages
+
 - name: Create pacman hook directory
   file: path=/etc/pacman.d/hooks
     state=directory
