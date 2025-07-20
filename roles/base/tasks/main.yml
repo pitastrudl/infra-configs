@@ -4,14 +4,14 @@
     src: pacman.conf
     dest: /etc/pacman.conf
 
-- name: Refresh pacman mirrors
+- name: Refresh pacman databases
   pacman:
     update_cache: yes
 
 - name: Install inetutils for hostname
   pacman:
-      name: inetutils
-      state: present
+    name: inetutils
+    state: present
 
 - name: Set the hostname
   hostname:
@@ -20,5 +20,6 @@
 
 - include_tasks: shell.yml
 - include_tasks: user.yml
+- include_tasks: fix_pacman.yml
 - include_tasks: packages.yml
 - include_tasks: journal.yml
