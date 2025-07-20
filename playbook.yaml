@@ -1,16 +1,25 @@
 ---
-- hosts: localhost  
-  become: True
+- name: do other
+  hosts: all
+  become: true
+  remote_user: arun
+
   vars:
-    ansible_connection: local
+    ansible_user: arun
   roles:
-    # - { role: base, tags: ['base'] }
-    # - { role: grub, tags: ['grub'], when: "bootloader == 'grub'"}
-    # - { role: sudo, tags: ['sudo'] }
-    # - { role: cron, tags: ['cron'] }
-    - { role: microcode, tags: ['microcode'], when: "'GenuineIntel' in ansible_processor" }
-    - { role: ssh, tags: ['ssh'] }
-    - { role: fonts, tags: ['fonts'] }
+    - { role: base, tags: ["base"] }
+    - { role: grub, tags: ["grub"], when: "bootloader == 'grub'" }
+    - { role: sudo, tags: ["sudo"] }
+    - { role: cron, tags: ["cron"] }
+    - {
+        role: microcode,
+        tags: ["microcode"],
+        when: "'GenuineIntel' in ansible_processor",
+      }
+    - { role: ssh, tags: ["ssh"] }
+    - { role: fonts, tags: ["fonts"] }
+    - { role: xfce4, tags: ["xfce4"] }
+    - { role: network_manager, tags: ["network_manager"] }
   # dotfiles?
   vars_prompt:
     - name: user_password
