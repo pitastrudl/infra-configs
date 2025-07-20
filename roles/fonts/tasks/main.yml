@@ -1,5 +1,5 @@
 ---
-- name: Install freetype2
+- name: Install freetype2 # Font for clearer rendering
   pacman:
     name: freetype2
     state: present
