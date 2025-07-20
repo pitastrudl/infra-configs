@@ -1,0 +1,41 @@
+---
+# roles/base/tasks/fix_pacman_keyring.yml
+
+- name: Test whether archlinux-keyring can be updated (detect key errors)
+  pacman:
+    name: archlinux-keyring
+    state: latest
+    update_cache: yes
+  register: keyring_test
+  ignore_errors: yes
+
+- name: Show keyring-test errors if test failed
+  debug:
+    var: keyring_test.stderr_lines
+  when: keyring_test.failed
+
+- block:
+    - name: Initialize a fresh pacman keyring (offline)
+      command: pacman-key --init
+
+    - name: Populate keyring with Arch Linux master keys (offline)
+      command: pacman-key --populate archlinux
+
+    - name: Re-run archlinux-keyring install to heal signatures
+      pacman:
+        name: archlinux-keyring
+        state: latest
+        update_cache: yes
+
+  when: keyring_test.failed
+
+  rescue:
+    - name: Fatal if offline repair failed
+      fail:
+        msg: >
+          Offline pacman-key repair failed (rc={{ keyring_test.rc }}).
+          Please inspect the above output.
+
+- name: Continue with remaining packaging tasks
+  debug:
+    msg: "Pacman keyring OK, proceeding with software installation."
